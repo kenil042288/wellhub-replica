@@ -1,0 +1,630 @@
+/* ============================================================
+   ExploreScreen (prefix: ex-) — search & discovery tab
+   ============================================================ */
+
+.ex-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* everything below the location row sits on white (real app) */
+.ex-content {
+  flex: 1;
+  background: var(--white);
+  padding-bottom: 28px;
+}
+
+.ex-content .hairline-top {
+  border-top-color: var(--hairline-cool);
+}
+
+.ex-content .hairline-bottom {
+  border-bottom-color: var(--hairline-cool);
+}
+
+/* ---------- search bar ---------- */
+
+.ex-search-row {
+  padding: 12px 20px 2px;
+}
+
+.ex-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 16px;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+  color: var(--gray);
+}
+
+.ex-search input {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.ex-search input::placeholder {
+  color: var(--gray-light);
+}
+
+/* ---------- chip row + plan dropdown ---------- */
+
+.ex-chip-zone {
+  position: relative;
+}
+
+.hscroll.ex-chips {
+  padding: 10px 20px;
+}
+
+.ex-clear-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+/* invisible click-catcher behind the plan dropdown (covers phone) */
+.ex-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 29;
+}
+
+.ex-plan-menu {
+  position: absolute;
+  top: calc(100% - 4px);
+  left: 20px;
+  z-index: 30;
+  width: 244px;
+  max-height: 330px;
+  overflow-y: auto;
+  background: var(--white);
+  border: 1px solid var(--hairline-cool);
+  border-radius: 16px;
+  box-shadow: var(--shadow-float);
+  padding: 8px;
+  scrollbar-width: none;
+}
+
+.ex-plan-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.ex-plan-menu-label {
+  padding: 6px 10px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+}
+
+.ex-plan-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.ex-plan-item:active,
+.ex-plan-active {
+  background: var(--cream);
+}
+
+.ex-plan-you {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--cta);
+}
+
+.ex-plan-price {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray);
+  flex-shrink: 0;
+}
+
+/* ---------- current location row ---------- */
+
+.ex-loc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 20px;
+  font-size: 13px;
+  color: var(--gray);
+}
+
+/* ---------- discovery feed ---------- */
+
+.ex-seeall {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ex-tile {
+  width: 100px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.ex-tile .logo-tile {
+  margin-bottom: 3px;
+}
+
+.ex-tile-name {
+  width: 100%;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ex-tile-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.ex-tile-rating svg {
+  color: #f5b400;
+}
+
+.ex-tile-dist {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+/* ---------- Wellhub AI promo banner (replaces map strip) ---------- */
+
+.ex-ai-banner {
+  position: relative;
+  height: 300px;
+  margin: 14px 0 4px;
+  background: linear-gradient(150deg, #1b1340, #5b4191);
+  overflow: hidden;
+}
+
+.ex-ai-fly {
+  position: absolute;
+  top: -70px;
+  right: -90px;
+  opacity: 0.12;
+  pointer-events: none;
+  line-height: 0;
+}
+
+.ex-ai-text {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  max-width: 76%;
+  color: var(--white);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.ex-map-fab {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: var(--shadow-float);
+}
+
+/* ---------- vertical partner / class / app rows ---------- */
+
+.ex-count {
+  padding: 14px 20px 8px;
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.ex-list {
+  background: var(--white);
+}
+
+.ex-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--hairline-cool);
+  cursor: pointer;
+  text-align: left;
+}
+
+.ex-list .ex-row:last-child {
+  border-bottom: none;
+}
+
+.ex-row-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ex-row-name {
+  display: block;
+  max-width: 100%;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ex-row-tags {
+  display: block;
+  max-width: 100%;
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ex-row-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.ex-row-stars svg {
+  color: #f5b400;
+}
+
+.ex-row-stars b {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.ex-row-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.ex-row-dist {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.ex-row-plan {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray-light);
+  white-space: nowrap;
+}
+
+/* ---------- classes: date strip ---------- */
+
+.hscroll.ex-days {
+  padding: 14px 20px 8px;
+}
+
+.ex-day {
+  width: 54px;
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--hairline-cool);
+  border-radius: 16px;
+  color: var(--ink);
+}
+
+.ex-day-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  margin-bottom: 3px;
+}
+
+.ex-day-num {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ex-day-name {
+  margin-top: 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+}
+
+.ex-day-selected {
+  background: var(--cta);
+  border-color: var(--cta);
+  color: var(--white);
+}
+
+.ex-day-selected .ex-day-dot {
+  background: var(--white);
+}
+
+.ex-day-selected .ex-day-name {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- classes: rows ---------- */
+
+.ex-class-row {
+  align-items: flex-start;
+}
+
+.ex-class-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+.ex-class-spots {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray);
+  margin-top: 6px;
+}
+
+.ex-class-spots-low {
+  color: var(--cta);
+}
+
+.ex-online-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--lime);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.ex-book-zone {
+  margin-top: 10px;
+  animation: fade-in 0.15s ease;
+}
+
+.ex-booked {
+  background: var(--green-open);
+  color: var(--white);
+  pointer-events: none;
+}
+
+/* ---------- map view ---------- */
+
+.ex-mapview {
+  position: relative;
+}
+
+.ex-mapview-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  box-shadow: var(--shadow-float);
+}
+
+.ex-map-cards {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  z-index: 4;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 6px 20px;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 20px;
+  scrollbar-width: none;
+}
+
+.ex-map-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.ex-map-card {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: var(--shadow-float);
+}
+
+.ex-map-card-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ex-map-card-hours {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.ex-open {
+  color: var(--green-open);
+}
+
+.ex-closed {
+  color: var(--cta);
+}
+
+/* ---------- apps bottom sheet ---------- */
+
+.ex-sheet-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ex-sheet-title {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-warm);
+}
+
+.ex-sheet-cats {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 3px;
+}
+
+.ex-sheet-blurb {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 12px 0 16px;
+}
+
+.ex-steps-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink-warm);
+  margin-bottom: 10px;
+}
+
+.ex-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 11px;
+}
+
+.ex-step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.ex-step-text {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--gray);
+  padding-top: 2px;
+}
+
+.ex-activate {
+  margin-top: 8px;
+}
+
+.ex-activated {
+  background: var(--green-open);
+  color: var(--white);
+}
+
+/* ---------- empty states ---------- */
+
+.ex-empty {
+  margin: 16px 20px 0;
+  padding: 30px 22px;
+  background: var(--white);
+  border: 1px solid var(--hairline-cool);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--gray);
+}
+
+.ex-empty h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 10px 0 4px;
+}
+
+.ex-empty p {
+  font-size: 13px;
+  color: var(--gray);
+}

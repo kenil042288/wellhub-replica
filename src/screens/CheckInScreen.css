@@ -1,0 +1,261 @@
+/* ============================================================
+   CheckInScreen — "Check in" home tab (prefix: ci-)
+   ============================================================ */
+
+.ci-screen {
+  padding-bottom: 28px;
+}
+
+/* ---------- top bar ---------- */
+
+.ci-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px 0;
+}
+
+/* history button: light gray filled circle, no border */
+.ci-history-btn {
+  background: #eeeae0;
+  border: none;
+}
+
+/* ---------- headline ---------- */
+
+.ci-headline {
+  font-size: 23px;
+  letter-spacing: -0.02em;
+  padding: 12px 20px 2px;
+}
+
+/* ---------- upcoming class card ---------- */
+
+.ci-next-card {
+  margin: 12px 20px 4px;
+  padding: 18px;
+}
+
+.ci-next-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ci-next-names {
+  flex: 1;
+  min-width: 0;
+}
+
+.ci-next-venue {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink-warm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ci-next-class {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ci-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--lime);
+  flex-shrink: 0;
+}
+
+.ci-sched {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.ci-sched svg {
+  color: var(--gray);
+  flex-shrink: 0;
+}
+
+.ci-sched strong {
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- white section bands ---------- */
+
+/* full-width white band behind section header rows; the real app
+   alternates the cream page top with white section bands */
+.ci-band {
+  background: var(--white);
+  border-top: 1px solid var(--hairline);
+  margin-top: 14px;
+  padding: 14px 20px 12px;
+}
+
+.ci-band h2 {
+  font-size: 15px;
+}
+
+/* ---------- walk-ins: refresh button ---------- */
+
+.ci-refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--ink);
+  transition: transform 0.25s ease;
+}
+
+.ci-refresh:active {
+  transform: rotate(140deg);
+}
+
+/* ---------- walk-ins: map + carousel ---------- */
+
+.ci-map-wrap {
+  position: relative;
+  height: 300px;
+}
+
+.ci-walkin-scroll {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 20px;
+}
+
+.ci-walkin-card {
+  width: 200px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.ci-walkin-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ci-walkin-name {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-warm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ci-walkin-dist {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+.ci-walkin-btn {
+  width: 100%;
+}
+
+.ci-walkin-na {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.ci-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 0 0;
+}
+
+.ci-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--gray-light);
+  opacity: 0.5;
+  transition: width 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+.ci-dot-active {
+  width: 16px;
+  background: var(--ink);
+  opacity: 1;
+}
+
+/* ---------- bookings list ---------- */
+
+.ci-booking-card {
+  margin: 0 20px 12px;
+  padding: 16px 18px;
+}
+
+.ci-booking-sched {
+  margin-bottom: 0;
+}
+
+/* ---------- empty-state / book-a-class card ---------- */
+
+.ci-empty-card {
+  margin: 0 20px;
+  padding: 18px;
+  background: #faf7f0;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+}
+
+.ci-empty-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ci-lotus-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #efe6ff;
+  color: #7a5cc4;
+  flex-shrink: 0;
+}
+
+.ci-empty-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink-warm);
+}
+
+.ci-empty-link-row {
+  text-align: center;
+  padding-top: 2px;
+}

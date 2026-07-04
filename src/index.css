@@ -1,0 +1,429 @@
+/* ============================================================
+   Wellhub replica — design tokens & base styles
+   Palette verified from wellhub.com CSS + App Store assets:
+   cream #FBF8EC bg, magenta #F2496B brand / #D8385E CTA,
+   near-black #1D1D1F text, lime/purple/pink accents.
+   ============================================================ */
+
+:root {
+  --brand: #f2496b;          /* logo, app icon, active tab */
+  --cta: #d8385e;            /* primary buttons, links */
+  --cta-pressed: #c02c50;
+  --cream: #fbf8ec;          /* page background */
+  --cream-warm: #f6eddf;     /* secondary bands */
+  --ink: #1d1d1f;            /* primary text */
+  --ink-warm: #231b22;       /* headlines */
+  --gray: #6e6e73;           /* secondary text */
+  --gray-light: #a8a094;
+  --hairline: #e6e0d2;       /* borders on cream */
+  --hairline-cool: #ececec;  /* borders on white */
+  --lime: #dcff79;
+  --purple: #a880ff;
+  --purple-deep: #5b4191;
+  --navy: #1b1340;
+  --pink: #ff809f;
+  --green-dark: #034036;
+  --green-open: #0e7a4a;     /* "Open" hours text */
+  --white: #ffffff;
+
+  --font-ui: 'Inter Variable', 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-logo: 'Nunito', 'Inter Variable', sans-serif;
+
+  --radius-card: 20px;
+  --radius-tile: 14px;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 2px 12px rgba(29, 29, 31, 0.07);
+  --shadow-float: 0 8px 28px rgba(29, 29, 31, 0.16);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--ink);
+  background: #efe9da;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+input {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* ---------- phone frame (desktop) / full-bleed (mobile) ---------- */
+
+.phone-stage {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(80rem 40rem at 20% 0%, rgba(168, 128, 255, 0.14), transparent 60%),
+    radial-gradient(60rem 40rem at 90% 100%, rgba(220, 255, 121, 0.22), transparent 55%),
+    #efe9da;
+}
+
+.phone {
+  position: relative;
+  width: 393px;
+  height: 852px;
+  max-height: 96vh;
+  background: var(--cream);
+  border-radius: 44px;
+  border: 10px solid #101012;
+  box-shadow: 0 30px 80px rgba(16, 16, 18, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 560px), (max-height: 700px) {
+  .phone-stage {
+    background: var(--cream);
+  }
+  .phone {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    /* real devices draw their own status bar over the notch area */
+    padding-top: env(safe-area-inset-top);
+  }
+  .status-bar {
+    display: none;
+  }
+  .tab-bar {
+    padding-bottom: max(22px, env(safe-area-inset-bottom));
+  }
+}
+
+/* the scrollable screen area between status bar and tab bar */
+.screen {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--cream);
+  scrollbar-width: none;
+}
+
+.screen::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- shared primitives ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 700;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--cta);
+  color: var(--white);
+}
+
+.btn-primary:active {
+  background: var(--cta-pressed);
+}
+
+.btn-outline {
+  background: var(--white);
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+
+.btn-lime {
+  background: var(--lime);
+  color: var(--ink-warm);
+}
+
+.btn-small {
+  height: 34px;
+  padding: 0 16px;
+  font-size: 13px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.text-link {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.text-link-red {
+  color: var(--cta);
+  text-decoration: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline);
+  background: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.chip-selected {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.hairline-top {
+  border-top: 1px solid var(--hairline);
+}
+
+.hairline-bottom {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.dashed-divider {
+  border: none;
+  border-top: 1.5px dashed var(--hairline);
+  margin: 12px 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 20px 12px;
+}
+
+.section-header h2 {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-warm);
+}
+
+.headline {
+  font-family: var(--font-ui);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink-warm);
+}
+
+.meta-line {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.hscroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 4px 20px 8px;
+  scrollbar-width: none;
+}
+
+.hscroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* squircle logo tile used for partners & apps */
+.logo-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-tile);
+  color: var(--white);
+  font-weight: 800;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* full-screen overlay pages (partner detail, history, settings) */
+.overlay-page {
+  position: absolute;
+  inset: 0;
+  background: var(--cream);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  animation: page-in 0.22s ease;
+  padding-top: env(safe-area-inset-top);
+}
+
+@keyframes page-in {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* bottom sheets (booking confirm, etc.) */
+.sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(29, 29, 31, 0.45);
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  animation: fade-in 0.18s ease;
+}
+
+.sheet {
+  width: 100%;
+  background: var(--white);
+  border-radius: 24px 24px 0 0;
+  padding: 12px 20px calc(28px + env(safe-area-inset-bottom));
+  animation: sheet-up 0.24s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.sheet-grabber {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--hairline-cool);
+  margin: 4px auto 14px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(40px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* circular icon button (close, back, share...) */
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+/* tag with one squared corner (wellhub speech-bubble style) */
+.corner-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px 10px 10px 2px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-warm);
+}
+
+/* ---------- app chrome: status bar & tab bar ---------- */
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px 6px;
+  background: var(--cream);
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.status-time {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.status-glyphs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tab-bar {
+  display: flex;
+  background: var(--white);
+  border-top: 1px solid var(--hairline-cool);
+  padding: 8px 0 22px;
+  flex-shrink: 0;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.tab-item.tab-active {
+  color: var(--cta);
+}

@@ -1,0 +1,712 @@
+/* ============================================================
+   ProfileScreen / SettingsPage / PlansPage — prefix: pr-
+   ============================================================ */
+
+/* ---------- profile header ---------- */
+
+.pr-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 18px 20px 4px;
+}
+
+.pr-name {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-warm);
+}
+
+.pr-plan-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.pr-plan-pill {
+  background: rgba(242, 73, 107, 0.13);
+  color: var(--cta);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+}
+
+.pr-via {
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.pr-wid {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.pr-wid-num {
+  font-variant-numeric: tabular-nums;
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+/* ---------- generic card spacing ---------- */
+
+.pr-card {
+  margin: 14px 20px 0;
+  padding: 16px;
+}
+
+/* ---------- streak card ---------- */
+
+.pr-streak {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pr-flame {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pr-streak-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.pr-streak-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink-warm);
+}
+
+.pr-streak-sub {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+.pr-share-copied {
+  color: var(--green-open);
+}
+
+/* ---------- Wellhub AI banner ---------- */
+
+.pr-ai {
+  margin: 14px 20px 0;
+  background: var(--navy);
+  border: 2px solid var(--purple);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  color: var(--white);
+  overflow: hidden;
+}
+
+.pr-ai-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+}
+
+.pr-ai-spark {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pr-ai-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.pr-ai-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.pr-ai-sub {
+  font-size: 12px;
+  color: #b7abdd;
+  margin-top: 2px;
+}
+
+.pr-ai-chev {
+  color: var(--white);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.pr-ai-chev-open {
+  transform: rotate(90deg);
+}
+
+.pr-ai-chat {
+  padding: 2px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pr-bubble {
+  max-width: 84%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.pr-bubble-user {
+  align-self: flex-end;
+  background: var(--purple);
+  color: var(--navy);
+  font-weight: 600;
+  border-bottom-right-radius: 4px;
+}
+
+.pr-bubble-ai {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.09);
+  color: #efeafd;
+  border-bottom-left-radius: 4px;
+}
+
+.pr-ai-input {
+  margin-top: 4px;
+  height: 42px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(168, 128, 255, 0.4);
+  color: #8f83b8;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+/* ---------- schedule ---------- */
+
+.pr-sched-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: calc(100% - 40px);
+  margin: 0 20px 12px;
+  padding: 14px;
+}
+
+.pr-sched-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.pr-sched-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink-warm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pr-sched-venue {
+  font-size: 12.5px;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+.pr-sched-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.pr-sched-chev {
+  color: var(--gray-light);
+  flex-shrink: 0;
+}
+
+.pr-empty {
+  font-size: 13px;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 16px;
+}
+
+/* ---------- booking sheet ---------- */
+
+.pr-sheet-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.pr-sheet-name {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink-warm);
+}
+
+.pr-sheet-venue {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+.pr-sheet-time {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 4px;
+}
+
+.pr-sheet-note {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.pr-sheet-keep {
+  display: block;
+  margin: 16px auto 0;
+}
+
+/* ---------- recent check-ins ---------- */
+
+.pr-history-card {
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+.pr-hist-row {
+  padding: 14px 16px;
+}
+
+.pr-hist-row + .pr-hist-row {
+  border-top: 1px solid var(--hairline-cool);
+}
+
+.pr-hist-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pr-hist-partner {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-warm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pr-hist-sub {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 3px;
+}
+
+.pr-status {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pr-status-confirmed {
+  background: rgba(14, 122, 74, 0.12);
+  color: var(--green-open);
+}
+
+.pr-status-pending {
+  background: #fbedd0;
+  color: #9a6b1a;
+}
+
+.pr-status-expired {
+  background: #efefef;
+  color: var(--gray);
+}
+
+.pr-rate-link {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.pr-stars {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pr-star-btn {
+  color: var(--ink);
+  display: flex;
+  padding: 2px;
+}
+
+.pr-thanks {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-open);
+  margin-top: 8px;
+}
+
+/* ---------- challenges ---------- */
+
+.pr-chal {
+  position: relative;
+  margin: 0 20px 12px;
+  padding: 16px 16px 16px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.pr-chal-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+}
+
+.pr-chal-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.pr-chal-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink-warm);
+}
+
+.pr-chal-meta {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.pr-chal-pill {
+  background: var(--lime);
+  color: var(--ink-warm);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 11px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ---------- badges ---------- */
+
+.pr-badges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 8px;
+  padding: 4px 20px 8px;
+}
+
+.pr-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pr-badge-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--cream-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.pr-badge-locked {
+  opacity: 0.4;
+}
+
+.pr-badge-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--ink);
+}
+
+/* ---------- footer ---------- */
+
+.pr-footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--gray-light);
+  padding: 26px 20px 28px;
+  line-height: 1.5;
+}
+
+/* ---------- toast (shared) ---------- */
+
+.pr-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 120px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-float);
+  white-space: nowrap;
+  z-index: 80;
+  pointer-events: none;
+  animation: pr-toast-fade 1.6s ease forwards;
+}
+
+@keyframes pr-toast-fade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 6px);
+  }
+  8% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---------- overlay top bar (settings & plans) ---------- */
+
+.pr-topbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  flex-shrink: 0;
+}
+
+.pr-topbar-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-warm);
+  pointer-events: none;
+}
+
+.pr-topbar-spacer {
+  width: 38px;
+  flex-shrink: 0;
+}
+
+.pr-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.pr-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- settings groups ---------- */
+
+.pr-group-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding: 20px 24px 8px;
+}
+
+.pr-group-card {
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+.pr-set-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 16px;
+}
+
+.pr-set-row + .pr-set-row {
+  border-top: 1px solid var(--hairline-cool);
+}
+
+.pr-set-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pr-set-value {
+  font-size: 13px;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.pr-set-chev {
+  color: var(--gray-light);
+  flex-shrink: 0;
+}
+
+.pr-delete {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: var(--cta);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 24px 20px 6px;
+}
+
+.pr-version {
+  text-align: center;
+  font-size: 11px;
+  color: var(--gray-light);
+  padding: 10px 20px 32px;
+}
+
+/* ---------- plans page ---------- */
+
+.pr-plans-head {
+  padding: 4px 20px 2px;
+}
+
+.pr-plans-sub {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.45;
+  margin-top: 8px;
+}
+
+.pr-plan-card {
+  position: relative;
+  margin: 14px 20px 0;
+  padding: 18px;
+}
+
+.pr-plan-current {
+  border: 2px solid var(--brand);
+}
+
+.pr-plan-tag {
+  position: absolute;
+  top: -11px;
+  right: 16px;
+  background: var(--lime);
+}
+
+.pr-plan-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pr-plan-name {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink-warm);
+}
+
+.pr-plan-price {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink-warm);
+  white-space: nowrap;
+}
+
+.pr-plan-blurb {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.45;
+  margin-top: 6px;
+}
+
+.pr-plan-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 14px;
+}
+
+.pr-bullet {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.pr-bullet-check {
+  color: var(--green-open);
+  flex-shrink: 0;
+}
+
+.pr-demo-row {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 13px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray);
+  text-align: center;
+}
+
+.pr-plans-pad {
+  height: 32px;
+}

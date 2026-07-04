@@ -1,0 +1,377 @@
+/* ============================================================
+   CheckedInModal (cm-) — full-bleed magenta check-in confirmation
+   HistoryPage   (hi-) — check-in history overlay page
+   ============================================================ */
+
+/* ---------------- Checked in modal ---------------- */
+
+/* Split background: FLAT magenta top ~55%, light lower panel below.
+   The venue card straddles the seam. System font stack so this
+   screen renders in SF Pro on Apple devices, like the real app. */
+.cm-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  background: linear-gradient(
+    180deg,
+    #d8385e 0%,
+    #d8385e 55%,
+    #f7f6f3 55%,
+    #f7f6f3 100%
+  );
+  overflow: hidden;
+  animation: cm-in 0.26s cubic-bezier(0.2, 0.9, 0.3, 1);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue',
+    system-ui, Arial, sans-serif;
+}
+
+@keyframes cm-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cm-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 132px;
+  scrollbar-width: none;
+}
+
+.cm-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.cm-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(24px + env(safe-area-inset-top)) 20px 0;
+}
+
+/* wordmark first, then flywheel: "wellhub ❋" */
+.cm-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cm-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.cm-close:active {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* headline sits ~44% down the screen, just above the seam */
+.cm-head {
+  padding: 0 24px;
+  margin-top: 300px;
+}
+
+.cm-headline {
+  font-family: inherit;
+  color: #fff;
+  font-size: 33px;
+  letter-spacing: -0.02em;
+}
+
+.cm-card {
+  background: var(--white);
+  border-radius: 14px;
+  margin: 24px 20px 0;
+  padding: 14px 16px;
+  color: var(--ink);
+  box-shadow: 0 4px 14px rgba(27, 19, 64, 0.1);
+}
+
+.cm-venue-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cm-venue-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c1c1e;
+  letter-spacing: -0.01em;
+}
+
+.cm-venue-activity {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+/* --- collapsible code card --- */
+
+.cm-code-card {
+  margin: 20px 20px 0;
+  padding: 0;
+}
+
+/* centered glyph + label group; whole row toggles (no chevron) */
+.cm-code-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  color: #1c1c1e;
+  border-bottom: 1px solid #f0ede8;
+}
+
+.cm-code-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.cm-code-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.cm-code-body.cm-open {
+  max-height: 340px;
+}
+
+.cm-code-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px 16px 22px;
+  color: var(--ink);
+}
+
+/* partners without a scannable code: just the number in roomy
+   white space, proportioned to the real Crunch check-in */
+.cm-code-number-only {
+  padding: 66px 16px 47px;
+}
+
+.cm-code-number-only .cm-code-digits {
+  margin-top: 0;
+}
+
+.cm-code-digits {
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #1c1c1e;
+}
+
+.cm-code-valid {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+/* --- pinned bottom actions (on the light lower panel) --- */
+
+.cm-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 24px 46px;
+  text-align: center;
+}
+
+/* plain black underlined link, no icon — exactly as in the real app */
+.cm-share {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c1c1e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------------- Check-in history page ---------------- */
+
+.hi-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px 10px;
+  flex-shrink: 0;
+}
+
+.hi-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-warm);
+  letter-spacing: -0.01em;
+}
+
+.hi-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 32px;
+  scrollbar-width: none;
+}
+
+.hi-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hi-summary-card {
+  display: flex;
+  margin: 0 20px;
+  padding: 18px 8px;
+}
+
+.hi-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+  min-width: 0;
+}
+
+.hi-stat + .hi-stat {
+  border-left: 1px solid var(--hairline-cool);
+}
+
+.hi-stat-num {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-warm);
+  line-height: 1.1;
+}
+
+.hi-stat-cap {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray);
+}
+
+.hi-stat-label {
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.hi-bar {
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background: var(--hairline);
+  overflow: hidden;
+}
+
+.hi-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--cta);
+}
+
+.hi-stat-detail {
+  margin-top: 8px;
+  font-size: 10.5px;
+  color: var(--gray-light);
+}
+
+.hi-reset-note {
+  margin: 10px 24px 0;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.hi-list-card {
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+.hi-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.hi-row + .hi-row {
+  border-top: 1px solid var(--hairline-cool);
+}
+
+.hi-row-partner {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-warm);
+}
+
+.hi-row-meta {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.hi-status {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hi-status-confirmed {
+  color: #0e7a4a;
+  background: #e2f3e9;
+}
+
+.hi-status-pending {
+  color: #8a6100;
+  background: #fbf0d2;
+}
+
+.hi-status-expired {
+  color: #6e6e73;
+  background: #efefef;
+}
+
+.hi-statement {
+  display: block;
+  margin: 22px auto 6px;
+}
+
+.hi-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 36px;
+  transform: translateX(-50%);
+  z-index: 5;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: var(--shadow-float);
+  animation: fade-in 0.18s ease;
+}
