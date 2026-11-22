@@ -46,7 +46,7 @@ export const partners = [
     name: 'Crunch - Hoboken',
     short: 'CRUNCH',
     logo: `${import.meta.env.BASE_URL}logos/crunch.svg`,
-    codeType: 'number', // front desk scans nothing — number only, per real app
+    codeType: 'qr', // QR only, no digits — per real app (Nov 2026 screenshot)
     activityLabel: 'Gym + Classes',
     type: 'Gym',
     tags: ['Gym access', 'Classes', 'Cardio'],

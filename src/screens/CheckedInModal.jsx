@@ -28,6 +28,15 @@ const ScanGlyph = ({ size = 18 }) => (
   </svg>
 );
 
+// Sparkle pair (big 4-point star + small one) on the Share button.
+const SparkleGlyph = ({ size = 14 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M10 4c.6 3.6 2.4 5.4 6 6-3.6.6-5.4 2.4-6 6-.6-3.6-2.4-5.4-6-6 3.6-.6 5.4-2.4 6-6Z" />
+    <path d="M18 13.5c.3 1.8 1.2 2.7 3 3-1.8.3-2.7 1.2-3 3-.3-1.8-1.2-2.7-3-3 1.8-.3 2.7-1.2 3-3Z" />
+    <path d="M17.5 2c.2 1.2.8 1.8 2 2-1.2.2-1.8.8-2 2-.2-1.2-.8-1.8-2-2 1.2-.2 1.8-.8 2-2Z" />
+  </svg>
+);
+
 export default function CheckedInModal({ app, venue, activity }) {
   const [codeOpen, setCodeOpen] = useState(true);
   const [copied, setCopied] = useState(false);
@@ -76,7 +85,12 @@ export default function CheckedInModal({ app, venue, activity }) {
             <span className="cm-code-title">{codeOpen ? 'Hide code' : 'Show code'}</span>
           </button>
           <div className={`cm-code-body ${codeOpen ? 'cm-open' : ''}`}>
-            {venue.codeType === 'number' ? (
+            {venue.codeType === 'qr' ? (
+              // QR only, no digits underneath (current Crunch check-in)
+              <div className="cm-code-inner cm-code-qr-only">
+                <FakeQR seed={app.user.wellhubId} size={108} />
+              </div>
+            ) : venue.codeType === 'number' ? (
               // some partners (e.g. Crunch) issue a plain numeric code
               <div className="cm-code-inner cm-code-number-only">
                 <div className="cm-code-digits">{app.user.wellhubId}</div>
@@ -94,7 +108,8 @@ export default function CheckedInModal({ app, venue, activity }) {
 
       <div className="cm-bottom">
         <button className="cm-share" onClick={handleShare}>
-          {copied ? 'Copied ✓' : 'Share with friends'}
+          <SparkleGlyph size={14} />
+          <span>{copied ? 'Copied ✓' : 'Share'}</span>
         </button>
       </div>
     </div>
