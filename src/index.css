@@ -113,10 +113,10 @@ input {
     /* real devices draw their own status bar over the notch area */
     padding-top: env(safe-area-inset-top);
   }
-  .status-bar {
+  .phone .status-bar {
     display: none;
   }
-  .tab-bar {
+  .phone .tab-bar {
     padding-bottom: max(22px, env(safe-area-inset-bottom));
   }
 }
@@ -379,6 +379,35 @@ input {
   font-size: 12px;
   font-weight: 700;
   color: var(--ink-warm);
+}
+
+/* ---------- launch screen ---------- */
+
+.splash {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background: #d4385d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease;
+}
+
+.splash-fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-logo {
+  width: 50.5%;
+  display: flex;
+  justify-content: center;
+}
+
+.splash-logo svg {
+  width: 100%;
+  height: auto;
 }
 
 /* ---------- app chrome: status bar & tab bar ---------- */

@@ -6,6 +6,29 @@ import ExploreScreen from './screens/ExploreScreen.jsx';
 import ProfileScreen, { SettingsPage, PlansPage } from './screens/ProfileScreen.jsx';
 import PartnerDetail from './screens/PartnerDetail.jsx';
 import CheckedInModal, { HistoryPage } from './screens/CheckedInModal.jsx';
+import WellhubLockup from './components/WellhubLockup.jsx';
+
+// Launch screen: flat magenta with the centered white lockup, held
+// briefly on cold start, then faded out (matches the real app).
+function Splash() {
+  const [phase, setPhase] = useState('show'); // show -> fade -> gone
+  useEffect(() => {
+    const t1 = setTimeout(() => setPhase('fade'), 1300);
+    const t2 = setTimeout(() => setPhase('gone'), 1700);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
+  if (phase === 'gone') return null;
+  return (
+    <div className={`splash ${phase === 'fade' ? 'splash-fade' : ''}`} aria-hidden="true">
+      <div className="splash-logo">
+        <WellhubLockup width={198} color="#ffffff" />
+      </div>
+    </div>
+  );
+}
 
 const TABS = [
   { id: 'checkin', label: 'Check in', Icon: PinIcon },
@@ -147,6 +170,7 @@ export default function App() {
   return (
     <div className="phone-stage">
       <div className="phone">
+        <Splash />
         <StatusBar />
         <div className="screen">
           {tab === 'checkin' && <CheckInScreen app={app} bookedClasses={bookedClasses} />}
