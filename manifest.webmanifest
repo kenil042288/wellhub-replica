@@ -1,0 +1,15 @@
+{
+  "name": "Wellhub",
+  "short_name": "Wellhub",
+  "display": "standalone",
+  "start_url": "./",
+  "background_color": "#fbf8ec",
+  "theme_color": "#fbf8ec",
+  "icons": [
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
